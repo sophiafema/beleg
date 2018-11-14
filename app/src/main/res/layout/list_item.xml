@@ -9,7 +9,7 @@
     >
 
     <TextView
-        android:id="@+id/produktname_einkaufsliste"
+        android:id="@+id/txt_produktname_einkaufsliste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_name"
