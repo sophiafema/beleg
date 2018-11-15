@@ -1,4 +1,4 @@
-package com.sophiafema.belegrecyclerview;
+package com.sophiafema.belegrecyclerview.lists;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sophiafema.belegrecyclerview.Produkt;
+import com.sophiafema.belegrecyclerview.R;
+
 import java.util.List;
 
-public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<EinkaufslisteProduktAdapter.ProduktViewHolder>
+public class BestandProduktAdapter extends RecyclerView.Adapter<BestandProduktAdapter.ProduktViewHolder>
 {
     protected List<Produkt> produkte;
-    public EinkaufslisteProduktAdapter(List<Produkt> produkte) {
+    public BestandProduktAdapter(List<Produkt> produkte) {
         this.produkte = produkte;
     }
 

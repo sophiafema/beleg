@@ -1,4 +1,4 @@
-package com.sophiafema.belegrecyclerview;
+package com.sophiafema.belegrecyclerview.lists;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,23 +7,28 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
+import com.sophiafema.belegrecyclerview.Produkt;
+import com.sophiafema.belegrecyclerview.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class EinkaufslisteActivity extends AppCompatActivity {
+public class BestandActivity extends AppCompatActivity {
 
     List<Produkt> listOfProducts;
 
     RecyclerView rec;
     LayoutInflater inf;
-    EinkaufslisteProduktAdapter adp;
+    BestandProduktAdapter adp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.einkaufsliste_main);
 
-        //anders
+
+        setContentView(R.layout.bestand_main);
+
+        //anders --> aus bestand datenbank
         listOfProducts = new ArrayList<>();
         for(int i = 0; i<17; i++)
         {
@@ -32,15 +37,13 @@ public class EinkaufslisteActivity extends AppCompatActivity {
         }
 
         //RECYCLERVIEW
-        rec = findViewById(R.id.rec_einkaufsliste);
+        rec = findViewById(R.id.rec_bestand);
         inf = getLayoutInflater();
         rec.setLayoutManager(new LinearLayoutManager(this));
         //vertikale trennung der items
         rec.addItemDecoration(new DividerItemDecoration(rec.getContext(), DividerItemDecoration.VERTICAL));
         //adapter
-        adp = new EinkaufslisteProduktAdapter(listOfProducts);
+        adp = new BestandProduktAdapter(listOfProducts);
         rec.setAdapter(adp);
-
-
     }
 }
