@@ -9,15 +9,15 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ProduktAdapter extends RecyclerView.Adapter<ProduktAdapter.ProduktViewHolder>
+public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<EinkaufslisteProduktAdapter.ProduktViewHolder>
 {
     protected List<Produkt> produkte;
-    public ProduktAdapter(List<Produkt> produkte) {
+    public EinkaufslisteProduktAdapter(List<Produkt> produkte) {
         this.produkte = produkte;
     }
 
     /**
-     * Item layout festlegen
+     * Item layout festlegen --> Layout entw. bestand oder einkaufslliste
      * @param viewGroup
      * @param i
      * @return
@@ -25,7 +25,7 @@ public class ProduktAdapter extends RecyclerView.Adapter<ProduktAdapter.ProduktV
     @NonNull
     @Override
     public ProduktViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.bestand_item, viewGroup, false);
         return new ProduktViewHolder(v);
     }
 
@@ -53,7 +53,8 @@ public class ProduktAdapter extends RecyclerView.Adapter<ProduktAdapter.ProduktV
 
         public ProduktViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.produktname = itemView.findViewById(R.id.txt_produktname_einkaufsliste);
+            //je nach layout
+            this.produktname = itemView.findViewById(R.id.txt_produktname_bestand);
         }
     }
 }
