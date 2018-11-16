@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
-import com.sophiafema.belegrecyclerview.Produkt;
+import com.sophiafema.belegrecyclerview.data.Product;
 import com.sophiafema.belegrecyclerview.R;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 
 public class EinkaufslisteActivity extends AppCompatActivity {
 
-    List<Produkt> listOfProducts;
+    List<Product> listOfProducts;
 
     RecyclerView rec;
     LayoutInflater inf;
@@ -31,15 +31,20 @@ public class EinkaufslisteActivity extends AppCompatActivity {
         for(int i = 0; i<17; i++)
         {
             String pn = "produkt #" + i;
-            listOfProducts.add(new Produkt(pn, "", false));
+            listOfProducts.add(new Product(pn, "", false));
         }
 
         //RECYCLERVIEW
         rec = findViewById(R.id.rec_einkaufsliste);
         inf = getLayoutInflater();
-        rec.setLayoutManager(new LinearLayoutManager(this));
-        //vertikale trennung der items
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rec.setLayoutManager(layoutManager);
+
+        //divider
         rec.addItemDecoration(new DividerItemDecoration(rec.getContext(), DividerItemDecoration.VERTICAL));
+
+
+
         //adapter
         adp = new EinkaufslisteProduktAdapter(listOfProducts);
         rec.setAdapter(adp);

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.sophiafema.belegrecyclerview.data.Product;
@@ -12,10 +13,10 @@ import com.sophiafema.belegrecyclerview.R;
 
 import java.util.List;
 
-public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<EinkaufslisteProduktAdapter.ProduktViewHolder>
-{
+public class MuellProduktAdapter extends RecyclerView.Adapter<MuellProduktAdapter.MuellViewHolder> {
+
     protected List<Product> produkte;
-    public EinkaufslisteProduktAdapter(List<Product> produkte) {
+    public MuellProduktAdapter(List<Product> produkte) {
         this.produkte = produkte;
     }
 
@@ -27,9 +28,9 @@ public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<Einkaufsli
      */
     @NonNull
     @Override
-    public ProduktViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.einkaufsliste_item, viewGroup, false);
-        return new ProduktViewHolder(v);
+    public MuellViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.muell_item, viewGroup, false);
+        return new MuellViewHolder(v);
     }
 
     /**
@@ -39,10 +40,9 @@ public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<Einkaufsli
      * @param i
      */
     @Override
-    public void onBindViewHolder(@NonNull ProduktViewHolder customViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MuellViewHolder customViewHolder, int i) {
         Product p = produkte.get(i);
         customViewHolder.produktname.setText(p.getProduktname());
-
     }
 
     @Override
@@ -50,14 +50,16 @@ public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<Einkaufsli
         return produkte.size();
     }
 
-    public class ProduktViewHolder extends RecyclerView.ViewHolder {
+    public class MuellViewHolder extends RecyclerView.ViewHolder {
         //Wichtige Angaben in ListItem definieren
         private TextView produktname;
+        private ImageButton menubtn;
 
-        public ProduktViewHolder(@NonNull View itemView) {
+        public MuellViewHolder(@NonNull View itemView) {
             super(itemView);
             //je nach layout
-            this.produktname = itemView.findViewById(R.id.txt_produktname_einkaufsliste);
+            this.produktname = itemView.findViewById(R.id.txt_produktname_muell);
         }
     }
+
 }

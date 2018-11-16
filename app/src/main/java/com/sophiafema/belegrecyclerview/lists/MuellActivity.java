@@ -13,20 +13,20 @@ import com.sophiafema.belegrecyclerview.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BestandActivity extends AppCompatActivity {
+public class MuellActivity extends AppCompatActivity {
 
     List<Product> listOfProducts;
 
     RecyclerView rec;
     LayoutInflater inf;
-    BestandProduktAdapter adp;
+    MuellProduktAdapter adp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
-        setContentView(R.layout.bestand_main);
+        setContentView(R.layout.muell_main);
 
         //anders --> aus bestand datenbank
         listOfProducts = new ArrayList<>();
@@ -37,13 +37,13 @@ public class BestandActivity extends AppCompatActivity {
         }
 
         //RECYCLERVIEW
-        rec = findViewById(R.id.rec_bestand);
+        rec = findViewById(R.id.rec_muell);
         inf = getLayoutInflater();
         rec.setLayoutManager(new LinearLayoutManager(this));
         //vertikale trennung der items
         rec.addItemDecoration(new DividerItemDecoration(rec.getContext(), DividerItemDecoration.VERTICAL));
         //adapter
-        adp = new BestandProduktAdapter(listOfProducts);
+        adp = new MuellProduktAdapter(listOfProducts);
         rec.setAdapter(adp);
     }
 }
