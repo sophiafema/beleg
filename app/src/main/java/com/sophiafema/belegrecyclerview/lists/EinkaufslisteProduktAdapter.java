@@ -1,5 +1,6 @@
 package com.sophiafema.belegrecyclerview.lists;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,9 +15,12 @@ import java.util.List;
 
 public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<EinkaufslisteProduktAdapter.ProduktViewHolder>
 {
-    protected List<Product> produkte;
-    public EinkaufslisteProduktAdapter(List<Product> produkte) {
-        this.produkte = produkte;
+    protected List<Product> mProducts;
+    private final LayoutInflater mInflater;
+
+    public EinkaufslisteProduktAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+
     }
 
     /**
@@ -40,14 +44,30 @@ public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<Einkaufsli
      */
     @Override
     public void onBindViewHolder(@NonNull ProduktViewHolder customViewHolder, int i) {
-        Product p = produkte.get(i);
-        customViewHolder.produktname.setText(p.getProduktname());
+        /*Product p = mProducts.get(i);
+        customViewHolder.produktname.setText(p.getProduktname());*/
 
+        if(mProducts != null)
+        {
+            Product current = mProducts.get(i);
+            customViewHolder.produktname.setText(current.getProduktname());
+        }
+        else
+            customViewHolder.produktname.setText("No Product");
+    }
+
+    void setProducts (List<Product> products)
+    {
+        mProducts = products;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return produkte.size();
+        if(mProducts != null)
+            return mProducts.size();
+        else
+            return 0;
     }
 
     public class ProduktViewHolder extends RecyclerView.ViewHolder {
@@ -59,5 +79,12 @@ public class EinkaufslisteProduktAdapter extends RecyclerView.Adapter<Einkaufsli
             //je nach layout
             this.produktname = itemView.findViewById(R.id.txt_produktname_einkaufsliste);
         }
+    }
+
+
+    //swipe to delete
+    public Product getProductAtPosition(int position)
+    {
+        return mProducts.get(position);
     }
 }

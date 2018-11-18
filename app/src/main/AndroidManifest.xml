@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".lists.MuellActivity" />
-        <activity android:name=".lists.BestandActivity"></activity>
+        <activity android:name=".lists.BestandActivity" />
+        <activity android:name=".CreateActivity"></activity>
     </application>
 
 </manifest>
